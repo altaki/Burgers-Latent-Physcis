@@ -163,12 +163,9 @@ A monotone latent variable is not necessarily physical.
 ---
 🔎 Conclusion
 
-Neither reconstruction nor monotonicity alone is sufficient to recover a physically meaningful observable such as energy. I also tried to check whether the latent scalar variable is related to other physical variables, such as entropy production, second Fourier coefficient, shock width, and Lebesgue norms of $u$ ($L^1$ or $L^\infty$). However, it seems that the latent scalar variable is more strongly related to dissipation- and gradient-based observables than to energy.
-
-In particular, the best candidate in the current library is the viscous dissipation
-$\nu \int |u_x|^2 \, dx$,
-followed by $\|u_x\|_{L^2}$ and $\|u_x\|_{L^\infty}$.
-
-This suggests that the learned scalar captures the intensity of sharp spatial structures rather than the energy itself.
+The latent dynamics model does not recover the physical energy.
+The learned scalar variable is most frequently aligned with viscous dissipation, but residual analysis shows that dissipation alone does not fully explain it.
+The remaining unexplained component is strongly correlated with the maximum gradient, suggesting that the latent variable mixes global dissipation with local shock intensity.
+This supports the interpretation of z as a structured dissipation/shock indicator rather than a single classical observable.
 
 
