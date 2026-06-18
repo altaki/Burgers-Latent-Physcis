@@ -1,0 +1,29 @@
+{
+  "split": "test",
+  "summary": {
+    "n_trajectories": 100,
+    "n_times": 101,
+    "Nx": 128,
+    "global_min_state": -0.971876352165733,
+    "global_max_state": 0.9401433654195845,
+    "mean_initial_energy": 0.5,
+    "mean_final_energy": 0.3029217068974118,
+    "mean_dissipation": 1.9713042627105792,
+    "ic_distribution": {
+      "fourier": 39,
+      "gaussian_bumps": 23,
+      "random_smooth": 38
+    },
+    "mean_energy_monotone_fraction": 1.0,
+    "mean_energy_positive_violation": 0.0
+  },
+  "sanity_checks": {
+    "states_is_finite": true,
+    "energy_is_finite": true,
+    "dissipation_is_finite": true,
+    "times_is_sorted": true,
+    "x_is_sorted": true,
+    "energy_nonnegative": true,
+    "dissipation_nonnegative": true
+  }
+}

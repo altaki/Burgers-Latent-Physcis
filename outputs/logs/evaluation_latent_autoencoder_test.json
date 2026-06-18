@@ -1,0 +1,37 @@
+{
+  "checkpoint_path": "outputs\\models\\latent_autoencoder\\best_latent_autoencoder.pt",
+  "dataset_path": "outputs\\data\\test_data.npz",
+  "reconstruction_metrics": {
+    "mse": 0.00854747649282217,
+    "rmse": 0.09245256334543228,
+    "mae": 0.06283928453922272
+  },
+  "best_val_loss_from_training": 0.006994173667661034,
+  "scalar_vs_energy": {
+    "direct_metrics": {
+      "mse": 1.9097134643926257,
+      "rmse": 1.381923827275811,
+      "mae": 1.1818426221675506,
+      "max_abs_error": 4.34352970123291
+    },
+    "affine_calibration": {
+      "a": -0.002587547602774282,
+      "b": 0.3874055485059381,
+      "regression_metrics": {
+        "mse": 0.010771294228906948,
+        "rmse": 0.1037848458538478,
+        "mae": 0.08513355345590796,
+        "max_abs_error": 0.30356760840830876
+      }
+    },
+    "correlations": {
+      "pearson_correlation": -0.020126750517810422,
+      "spearman_correlation": -0.020737258798740634
+    }
+  },
+  "scalar_monotonicity": {
+    "mean_monotone_fraction": 0.39949999999999997,
+    "mean_positive_violation": 0.006456454066187144,
+    "max_positive_violation_overall": 0.07756376266479492
+  }
+}

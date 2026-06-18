@@ -1,0 +1,15 @@
+{
+  "dataset_path": "outputs\\data\\test_data.npz",
+  "generated_figures": {
+    "latent_dynamics": {
+      "scatter_z_vs_energy": "outputs\\figures\\latent_dynamics_scatter_z_vs_energy.png",
+      "trajectory_z_vs_energy": "outputs\\figures\\latent_dynamics_trajectory_z_vs_energy_traj0.png",
+      "monotonicity_histogram": "outputs\\figures\\latent_dynamics_monotonicity_histogram.png"
+    },
+    "latent_autoencoder": {
+      "scatter_z_vs_energy": "outputs\\figures\\latent_autoencoder_scatter_z_vs_energy.png",
+      "trajectory_z_vs_energy": "outputs\\figures\\latent_autoencoder_trajectory_z_vs_energy_traj0.png",
+      "monotonicity_histogram": "outputs\\figures\\latent_autoencoder_monotonicity_histogram.png"
+    }
+  }
+}

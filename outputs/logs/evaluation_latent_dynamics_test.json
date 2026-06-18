@@ -1,0 +1,65 @@
+{
+  "latent_prediction_metrics": {
+    "mse": 4.534455723046268e-09,
+    "rmse": 6.733836739219528e-05,
+    "mae": 4.090813995571807e-05
+  },
+  "scalar_monotonicity_pairwise": {
+    "mean_positive_violation": 1.1372320614100317e-06,
+    "max_positive_violation": 0.0004931986331939697,
+    "monotone_fraction": 0.9895
+  },
+  "scalar_vs_energy_t": {
+    "direct_metrics": {
+      "mse": 0.33600962620090097,
+      "rmse": 0.579663373175243,
+      "mae": 0.56103397128582,
+      "max_abs_error": 0.7494086623191833
+    },
+    "affine_calibration": {
+      "a": -0.15595524882047834,
+      "b": 0.3634967950954816,
+      "regression_metrics": {
+        "mse": 0.010459730138458233,
+        "rmse": 0.10227282209100438,
+        "mae": 0.08370536548674325,
+        "max_abs_error": 0.2939021532775447
+      }
+    },
+    "correlations": {
+      "pearson_correlation": -0.13576422618384576,
+      "spearman_correlation": -0.2448722769985754
+    }
+  },
+  "scalar_vs_energy_tp": {
+    "direct_metrics": {
+      "mse": 0.3343680840275176,
+      "rmse": 0.578245695208808,
+      "mae": 0.5594763962380588,
+      "max_abs_error": 0.7493497729301453
+    },
+    "affine_calibration": {
+      "a": -0.1618052111839769,
+      "b": 0.360459473239388,
+      "regression_metrics": {
+        "mse": 0.010550048157861968,
+        "rmse": 0.10271342734940728,
+        "mae": 0.08420802323274713,
+        "max_abs_error": 0.2926838205815042
+      }
+    },
+    "correlations": {
+      "pearson_correlation": -0.13955879083544753,
+      "spearman_correlation": -0.25329166727034025
+    }
+  },
+  "scalar_trajectory_monotonicity": {
+    "mean_monotone_fraction": 0.9893939393939394,
+    "mean_positive_violation": 1.1487192276752355e-06,
+    "max_positive_violation_overall": 0.0004931986331939697
+  },
+  "checkpoint_path": "outputs\\models\\latent_dynamics\\best_latent_dynamics_model.pt",
+  "dataset_path": "outputs\\data\\test_data.npz",
+  "best_val_loss_from_training": 6.557762980137483e-06,
+  "stride": 1
+}

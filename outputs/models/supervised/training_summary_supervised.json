@@ -1,0 +1,45 @@
+{
+  "best_epoch": 60,
+  "best_val_loss": 0.00019660796210115619,
+  "best_model_path": "outputs\\models\\supervised\\best_energy_regressor.pt",
+  "last_model_path": "outputs\\models\\supervised\\last_energy_regressor.pt",
+  "device": "cpu",
+  "seed": 42,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "num_epochs": 100,
+  "normalize": true,
+  "model_summary": {
+    "model_name": "EnergyRegressor",
+    "total_parameters": 25297,
+    "trainable_parameters": 25297
+  },
+  "train_dataset_description": {
+    "n_trajectories": 500,
+    "n_times": 101,
+    "nx": 128,
+    "time_min": 0.0,
+    "time_max": 2.0,
+    "mean_initial_energy": 0.5,
+    "mean_final_energy": 0.326493345065895,
+    "ic_distribution": {
+      "fourier": 154,
+      "gaussian_bumps": 166,
+      "random_smooth": 180
+    }
+  },
+  "val_dataset_description": {
+    "n_trajectories": 100,
+    "n_times": 101,
+    "nx": 128,
+    "time_min": 0.0,
+    "time_max": 2.0,
+    "mean_initial_energy": 0.5,
+    "mean_final_energy": 0.31443039386553645,
+    "ic_distribution": {
+      "fourier": 37,
+      "gaussian_bumps": 33,
+      "random_smooth": 30
+    }
+  }
+}

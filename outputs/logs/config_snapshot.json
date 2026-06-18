@@ -1,0 +1,72 @@
+{
+  "project_name": "burgers_latent_physics",
+  "experiment_name": "baseline_v1",
+  "paths": {
+    "output_root": "outputs",
+    "data_dir": "outputs\\data",
+    "models_dir": "outputs\\models",
+    "figures_dir": "outputs\\figures",
+    "logs_dir": "outputs\\logs"
+  },
+  "pde": {
+    "L": 6.283185307179586,
+    "Nx": 128,
+    "nu": 0.05,
+    "T": 2.0,
+    "dt": 0.0002,
+    "save_every": 100,
+    "boundary_condition": "periodic",
+    "spatial_scheme": "finite_difference",
+    "time_scheme": "rk4"
+  },
+  "dataset": {
+    "n_train": 500,
+    "n_val": 100,
+    "n_test": 100,
+    "ic_types": [
+      "fourier",
+      "gaussian_bumps",
+      "random_smooth"
+    ],
+    "max_fourier_mode": 3,
+    "fourier_amplitude_scale": 0.5,
+    "n_gaussian_bumps": 2,
+    "spectral_decay": 3.0,
+    "train_filename": "train_data.npz",
+    "val_filename": "val_data.npz",
+    "test_filename": "test_data.npz"
+  },
+  "normalization": {
+    "enabled": true,
+    "method": "global_standardization",
+    "eps": 1e-08
+  },
+  "ml": {
+    "latent_dim": 8,
+    "batch_size": 64,
+    "num_epochs": 100,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0,
+    "optimizer_name": "adam",
+    "device": "cpu",
+    "train_fraction": 1.0
+  },
+  "losses": {
+    "reconstruction_weight": 1.0,
+    "prediction_weight": 1.0,
+    "monotonicity_weight": 1.0,
+    "variance_weight": 0.01,
+    "min_latent_variance": 0.001,
+    "monotonicity_mode": "squared_hinge"
+  },
+  "evaluation": {
+    "n_plot_trajectories": 5,
+    "save_figures": true,
+    "print_every": 10,
+    "matplotlib_fontsize": 11
+  },
+  "reproducibility": {
+    "seed": 42,
+    "deterministic_torch": false
+  }
+}
