@@ -197,4 +197,49 @@ We compared the latent scalar `z` against a library of physical observables.
 #### Main findings
 
 - The **most frequently aligned observable** is:
+
+viscous dissipation: $$ \nu \int |u_x|^2 dx $$
+
+- However, the relationship is **not exact**:
+- moderate correlation (~0.4)
+- partial fit via affine transformation
+
+### ⚠️ Residual Analysis (Key Insight)
+
+After fitting dissipation, we analyzed the residual:
+
+- Residual vs energy → moderate correlation  
+- Residual vs time → weak correlation  
+- Residual vs max gradient → **strong correlation (~0.73+)**
+
+#### Interpretation
+
+The latent variable cannot be explained by dissipation alone.
+
+Instead, it retains strong dependence on:
+
+$$ max |u_x|  (shock / gradient intensity) $$
   
+---
+
+### 🧪 Final Interpretation
+
+The learned scalar `z` is best understood as a **composite physical indicator** combining:
+
+- global dissipation  
+- local shock intensity  
+
+A concise interpretation is:
+
+$$z \sim  f( dissipation, max|u_x| )$$
+
+---
+
+### ✅ Key Takeaways
+
+- ✅ Energy is easy to learn (if supervised)  
+- ❌ Reconstruction does not reveal physics  
+- ❌ Monotonicity alone is not sufficient  
+- ✅ The model discovers a **structured but non-identifiable physical latent variable**  
+
+> The latent variable is best described as a **dissipation-dominated but shock-aware scalar**, rather than a single classical observable.
