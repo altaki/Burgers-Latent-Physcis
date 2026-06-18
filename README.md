@@ -103,6 +103,9 @@ Spearman ≈ 0.976
 
 ✔ Energy is accurately predicted
 
+---
+
+
 ⚖️ Latent Autoencoder
 Reconstruction RMSE ≈ 0.09  
 Correlation(z, E) ≈ 0  
@@ -113,6 +116,8 @@ Monotonicity ≈ 0.40
 Good reconstruction
 BUT no physical meaning in z
 
+---
+
 
 🔁 Latent Dynamics
 Prediction error → very small ✅  
@@ -122,7 +127,12 @@ Correlation(z, E) ≈ -0.13 ❌
 ✔ Learns a monotone variable
 ❌ But not the energy
 
+---
+
 📸 Key Figures
+
+---
+
 Latent vs Energy (Latent Dynamics)
 outputs/figures/latent_dynamics_scatter_z_vs_energy.png
 ➡ No clear relationship between z and energy
@@ -135,6 +145,9 @@ Monotonicity (Autoencoder)
 outputs/figures/latent_autoencoder_monotonicity_histogram.png
 ➡ No structure without constraint
 
+---
+
+
 🧠 Scientific Insights
 
 ✅ Energy is learnable
@@ -146,6 +159,8 @@ Autoencoders do not extract physical observables.
 ❌ Monotonicity ≠ Energy
 A monotone latent variable is not necessarily physical.
 
+
+---
 🔎 Conclusion (Step 1)
 
 Neither reconstruction nor monotonicity alone is sufficient to recover a physically meaningful observable such as energy.
