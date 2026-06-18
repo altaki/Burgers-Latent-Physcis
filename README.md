@@ -242,4 +242,4 @@ $$z \sim  f( dissipation, max|u_x| )$$
 - ❌ Monotonicity alone is not sufficient  
 - ✅ The model discovers a **structured but non-identifiable physical latent variable**  
 
-> The latent variable is best described as a **dissipation-dominated but shock-aware scalar**, rather than a single classical observable.
+The latent variable is best described as a **dissipation-dominated but shock-aware scalar**, rather than a single classical observable.
