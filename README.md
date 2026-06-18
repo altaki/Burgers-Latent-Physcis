@@ -1,6 +1,6 @@
 # Burgers-Latent-Physics
 
-# 🚀 Burgers Latent Physics
+# 🚀 Burgers Latent Physics  
 ### *Learning Physical Observables from PDE Dynamics*
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
@@ -10,73 +10,124 @@
 
 ---
 
+## 📚 Table of Contents
+
+- [Overview](#-overview)
+- [Objective](#-objective)
+- [Methodology](#-methodology)
+  - [1. Supervised baseline](#-1-supervised-baseline)
+  - [2. Latent autoencoder](#️-2-latent-autoencoder)
+  - [3. Latent dynamics + monotonicity](#-3-latent-dynamics--monotonicity)
+- [Pipeline](#️-pipeline)
+- [Results](#-results)
+  - [Supervised baseline](#-supervised-baseline-1)
+  - [Latent autoencoder](#️-latent-autoencoder-1)
+  - [Latent dynamics](#-latent-dynamics)
+- [Candidate identification of the latent variable](#-candidate-identification-of-the-latent-variable)
+- [Interpretation of the learned latent scalar](#-interpretation-of-the-learned-latent-scalar)
+- [Key Figures](#-key-figures)
+- [Scientific Insights](#-scientific-insights)
+- [Conclusion (End of Step 1)](#-conclusion-end-of-step-1)
+- [Next Step (Step 2)](#-next-step-step-2)
+- [Project Status](#-project-status)
+- [Planned Step-2 Experiments](#-planned-step-2-experiments)
+- [Author](#-author)
+- [Key Insight](#-key-insight)
+
+---
+
 ## 📖 Overview
 
-This project investigates whether neural networks can **discover physically meaningful scalar observables** from the dynamics of a PDE.
+This project investigates whether neural networks can **discover physically meaningful scalar observables** from the dynamics of a nonlinear PDE.
 
 We consider the **viscous 1D Burgers equation**:
 
-$$ \partial_t u + u \partial_x u = \nu \partial_{xx} u $$
+$$
+\partial_t u + u \partial_x u = \nu \partial_{xx} u
+$$
 
+This system exhibits **dissipative behavior**, where the energy
 
-This system exhibits **dissipative behavior**, where the energy:
+$$
+E(t) = \dfrac{1}{2} \int u(x,t)^2 \, dx
+$$
 
-$$ E(t) = \dfrac{1}{2} \int u(x,t)^2 dx  $$
+decreases over time.
 
-is strictly decreasing over time.
+The central scientific question is whether a neural network can learn a **latent scalar variable** that behaves like a physical quantity **without explicit supervision**.
 
 ---
 
 ## 🎯 Objective
 
-> Can a neural network learn a **latent scalar observable `z`** behaving like a physical quantity (e.g. energy), **without supervision**?
+> Can a neural network learn a **latent scalar observable** `z` that behaves like a physically meaningful quantity (e.g. energy or dissipation), **without being explicitly told what that quantity is**?
 
 ---
 
 ## 🧠 Methodology
 
-We test three approaches:
+We explored three learning settings of increasing structure.
 
 ---
 
 ### ✅ 1. Supervised baseline
 
-Learn directly:
+We first train a standard neural network to predict the energy directly from the PDE state:
 
-$$ u \rightarrow  E(u) $$
+$$
+u \rightarrow E(u)
+$$
 
-✔ Purpose: reference performance
+**Purpose**
+- establish a strong baseline,
+- confirm that the dataset and learning setup are sound,
+- measure how easily a known physical quantity can be learned.
 
 ---
 
 ### ⚖️ 2. Latent Autoencoder
 
-Learn compression:
+We then train an autoencoder to compress and reconstruct the state:
 
-$$u \rightarrow h \to z \rightarrow \hat{u} $$
+$$
+u \rightarrow h \rightarrow z \rightarrow \hat{u}
+$$
 
-✔ No physical constraints  
-✔ Tests if physics emerges from reconstruction
+**Purpose**
+- test whether a meaningful scalar observable can emerge from reconstruction alone,
+- evaluate whether compression is sufficient to recover physics.
+
+**Key idea**
+- no explicit physical constraint is imposed on `z`.
 
 ---
 
 ### 🔁 3. Latent Dynamics + Monotonicity
 
-Learn latent dynamics:
+Finally, we train a latent dynamics model:
 
-$$ h_t → h_{t+1} $$
+$$
+h_t \rightarrow h_{t+1}
+$$
 
-Scalar extracted: 
+and extract a scalar variable
 
-$$ z(t)$$
+$$
+z(t)
+$$
 
+while imposing a monotonicity constraint:
 
-Constraint:
+$$
+z(t+1) \leq z(t)
+$$
 
+**Purpose**
+- test whether a latent scalar can emerge as a **monotone** quantity,
+- investigate whether monotonicity is sufficient to recover a physical observable.
 
-$$z(t+1) ≤ z(t)$$
-
-✔ Hypothesis: physical quantities are monotone
+**Hypothesis**
+- many physical quantities in dissipative systems are monotone in time.
 
 ---
 
@@ -89,83 +140,4 @@ python main_train_latent.py
 python main_evaluate.py
 python main_visualize_results.py
 python main_visualize_latent_results.py
-```
-
-
----
-📊 Results
-
-✅ Supervised baseline
-RMSE ≈ 0.013  
-MAE  ≈ 0.010  
-Pearson ≈ 0.992  
-Spearman ≈ 0.976  
-
-✔ Energy is accurately predicted
-
----
-
-
-⚖️ Latent Autoencoder
-Reconstruction RMSE ≈ 0.09  
-Correlation(z, E) ≈ 0  
-Monotonicity ≈ 0.40  
-
-❌ Interpretation:
-
-Good reconstruction
-BUT no physical meaning in z
-
----
-
-
-🔁 Latent Dynamics
-Prediction error → very small ✅  
-Monotonicity ≈ 0.99 ✅  
-Correlation(z, E) ≈ -0.13 ❌  
-
-✔ Learns a monotone variable
-❌ But not the energy
-
----
-
-📸 Key Figures
-
----
-
-Latent vs Energy (Latent Dynamics)
-outputs/figures/latent_dynamics_scatter_z_vs_energy.png
-➡ No clear relationship between z and energy
-
-Monotonicity (Latent Dynamics)
-outputs/figures/latent_dynamics_monotonicity_histogram.png
-➡ Strong monotonic behavior
-
-Monotonicity (Autoencoder)
-outputs/figures/latent_autoencoder_monotonicity_histogram.png
-➡ No structure without constraint
-
----
-
-
-🧠 Scientific Insights
-
-✅ Energy is learnable
-Supervised models recover energy accurately.
-
-❌ Reconstruction ≠ Physics
-Autoencoders do not extract physical observables.
-
-❌ Monotonicity ≠ Energy
-A monotone latent variable is not necessarily physical.
-
-
----
-🔎 Conclusion
-
-The latent dynamics model does not recover the physical energy.
-The learned scalar variable is most frequently aligned with viscous dissipation, but residual analysis shows that dissipation alone does not fully explain it.
-The remaining unexplained component is strongly correlated with the maximum gradient, suggesting that the latent variable mixes global dissipation with local shock intensity.
-This supports the interpretation of z as a structured dissipation/shock indicator rather than a single classical observable.
-
-
+``
