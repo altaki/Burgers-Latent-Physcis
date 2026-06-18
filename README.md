@@ -89,7 +89,10 @@ python main_train_latent.py
 python main_evaluate.py
 python main_visualize_results.py
 python main_visualize_latent_results.py
+```
 
+
+---
 📊 Results
 
 ✅ Supervised baseline
