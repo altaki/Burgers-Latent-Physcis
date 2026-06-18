@@ -140,4 +140,61 @@ python main_train_latent.py
 python main_evaluate.py
 python main_visualize_results.py
 python main_visualize_latent_results.py
-``
+```
+## 📊 Results
+
+### ✅ Supervised Baseline
+
+The supervised model successfully learns the physical energy from the state:
+
+- **RMSE** ≈ 0.013  
+- **MAE** ≈ 0.010  
+- **Pearson correlation** ≈ 0.99  
+
+**Interpretation**
+
+- Energy is highly learnable from the Burgers state  
+- The dataset and numerical pipeline are consistent  
+- This provides a strong reference point  
+
+---
+
+### ⚖️ Latent Autoencoder
+
+The autoencoder reconstructs the state but does not uncover any meaningful scalar observable.
+
+- Reconstruction RMSE ≈ 0.09  
+- Correlation between `z` and energy ≈ 0  
+- Monotonicity score ≈ 0.40  
+
+**Interpretation**
+
+- Good reconstruction does **not** imply physical meaning  
+- The latent scalar remains unstructured  
+- No evidence of emergent physical observable  
+
+---
+
+### 🔁 Latent Dynamics Model
+
+The latent dynamics model learns a structured scalar variable `z(t)`:
+
+- Monotonicity ≈ 0.99 ✅  
+- Latent prediction error → very small ✅  
+- Correlation with energy ≈ -0.13 ❌  
+
+**Interpretation**
+
+- The model successfully learns a nearly monotone latent variable  
+- However, this variable is **not aligned with energy**  
+
+---
+
+### 🔍 Latent Variable Identification
+
+We compared the latent scalar `z` against a library of physical observables.
+
+#### Main findings
+
+- The **most frequently aligned observable** is:
+  
